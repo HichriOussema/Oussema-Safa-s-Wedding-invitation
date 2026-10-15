@@ -1,0 +1,30 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Oussema & Safa Wedding//Lisbon//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:wedding-oussema-safa-20261031@invitation
+DTSTAMP:20261015T223500Z
+DTSTART:20261031T141500Z
+DTEND:20261031T153000Z
+SUMMARY:Wedding of Oussema & Safa
+LOCATION:Mesquita Central de Lisboa\, Rua da Mesquita 2\, Lisboa\, Portugal
+GEO:38.735547;-9.158528
+DESCRIPTION:Wedding (Nikah) after Dhuhr prayer at Mesquita Central de Lisbo
+ a (Lisbon Central Mosque).\nMetro: Praça de Espanha or São Sebastião.\n
+ Please dress modestly. Sisters are kindly asked to bring a headscarf.\nMap
+ : https://www.google.com/maps/search/?api=1&query=Mesquita%20Central%20de%
+ 20Lisboa%2C%20Rua%20da%20Mesquita%202%2C%20Lisboa
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Oussema & Safa's wedding tomorrow at 14:15
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Oussema & Safa's wedding in 2 hours
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

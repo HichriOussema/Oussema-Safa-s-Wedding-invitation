@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Oussema &amp; Safa's Wedding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Grenze+Gotisch:wght@400;500&family=Marcellus&display=swap">
+<style>
+/* Layout: one narrow mihrab arch (the pointed arch Islamic and Gothic builders share) on black,
+   holding the Nikah; quieter blocks for the countdown, the dinner and guest notes below it. */
+:root {
+  color-scheme: dark;
+  --ink: #0a0908;        /* page black, faint warm bias */
+  --panel: #110f0c;      /* inside the arch */
+  --gold: #c8a25a;       /* lines, labels */
+  --gold-hi: #ecd8a4;    /* main text */
+  --gold-lo: #8c6c34;    /* quiet text, deep gold */
+  --ash: #a79e8f;        /* secondary text */
+  --rule: rgba(200, 162, 90, 0.34);
+  --display: "Grenze Gotisch", "UnifrakturMaguntia", Georgia, serif;
+  --body: "Cormorant Garamond", Garamond, "Times New Roman", serif;
+  --label: "Marcellus", "Trajan Pro", Georgia, serif;
+  --arabic: "Amiri", "Scheherazade New", "Traditional Arabic", serif;
+}
+
+html { background: var(--ink); }
+body {
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(ellipse 75% 60% at 50% 32%, var(--ink) 30%, rgba(10, 9, 8, 0) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23c8a25a' stroke-opacity='.16' stroke-width='1'%3E%3Crect x='19' y='19' width='26' height='26'/%3E%3Crect x='19' y='19' width='26' height='26' transform='rotate(45 32 32)'/%3E%3Cpath d='M0 32h13.6M50.4 32H64M32 0v13.6M32 50.4V64'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: auto, 64px 64px;
+  color: var(--gold-hi);
+  font-family: var(--body);
+  font-size: 19px;
+  line-height: 1.45;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 36px 56px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+/* ---------- arch frame ---------- */
+.arch { position: relative; isolation: isolate; }
+.arch > svg.frame {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  overflow: visible; z-index: -1;
+  pointer-events: none;
+}
+.frame .outer { fill: var(--panel); stroke: var(--gold); stroke-width: 1.25; }
+.frame .inner { fill: none; stroke: var(--rule); stroke-width: 1; }
+
+.arch-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 15% 30px 34px;
+}
+
+.star { width: 30px; height: 30px; color: var(--gold); flex: none; }
+.star path, .star rect, .star circle { fill: none; stroke: currentColor; stroke-width: 1.1; }
+
+.bismillah {
+  font-family: var(--arabic);
+  font-size: 25px;
+  line-height: 1.6;
+  color: var(--gold);
+  margin: 14px 0 0;
+}
+
+.blessing {
+  font-style: italic;
+  color: var(--ash);
+  font-size: 17px;
+  max-width: 24ch;
+  margin: 18px 0 0;
+  text-wrap: balance;
+}
+
+.names {
+  margin: 22px 0 0;
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 0.95;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.names .name {
+  font-size: clamp(52px, 16vw, 68px);
+  background: linear-gradient(180deg, var(--gold-hi) 10%, var(--gold) 58%, var(--gold-lo) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.names .amp {
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 30px;
+  color: var(--gold);
+}
+
+.invite-line {
+  font-style: italic;
+  font-size: 19px;
+  margin: 20px 0 0;
+  max-width: 22ch;
+  text-wrap: balance;
+}
+.invite-line strong { font-style: normal; font-weight: 500; letter-spacing: 0.02em; }
+
+.divider {
+  display: flex; align-items: center; gap: 12px;
+  width: 100%; max-width: 240px;
+  margin: 26px 0;
+  color: var(--gold);
+}
+.divider::before, .divider::after {
+  content: ""; flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(200, 162, 90, 0), var(--gold));
+}
+.divider::after { background: linear-gradient(90deg, var(--gold), rgba(200, 162, 90, 0)); }
+.divider .star { width: 16px; height: 16px; }
+
+.label {
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  color: var(--gold);
+}
+
+/* date */
+.date {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 300px;
+}
+.date-side {
+  border-block: 1px solid var(--rule);
+  padding-block: 7px 6px;
+}
+.date-day {
+  font-family: var(--display);
+  font-size: 66px;
+  line-height: 0.9;
+  color: var(--gold-hi);
+  font-variant-numeric: lining-nums;
+}
+.date-year { margin-top: 10px; letter-spacing: 0.5em; padding-left: 0.5em; }
+.time {
+  margin: 18px 0 0;
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
+}
+.time span { color: var(--ash); font-style: italic; font-size: 18px; }
+.hijri {
+  font-family: var(--arabic);
+  color: var(--gold-lo);
+  font-size: 18px;
+  margin: 4px 0 0;
+}
+
+/* venue */
+.venue-name { font-size: 25px; font-weight: 500; line-height: 1.2; margin: 10px 0 0; text-wrap: balance; }
+.venue-sub { color: var(--ash); font-size: 17px; margin: 4px 0 0; }
+
+/* actions */
+.actions {
+  display: flex; flex-direction: column; gap: 12px;
+  width: 100%;
+  margin-top: 26px;
+}
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 54px;
+  padding: 0 18px;
+  font-family: var(--label);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  color: var(--gold-hi);
+  background: rgba(200, 162, 90, 0.04);
+  transition: background-color 0.2s, transform 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn svg * { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.btn:hover { background: rgba(200, 162, 90, 0.12); }
+.btn:active { transform: translateY(1px); }
+.btn-primary {
+  background: linear-gradient(180deg, var(--gold-hi) -40%, var(--gold) 60%, var(--gold-lo) 140%);
+  color: var(--ink);
+  border-color: var(--gold);
+}
+.btn-primary:hover { background: linear-gradient(180deg, var(--gold-hi) -10%, var(--gold) 70%, var(--gold-lo) 150%); }
+.btn:focus-visible, .alt-link:focus-visible { outline: 2px solid var(--gold-hi); outline-offset: 3px; }
+.alt-link {
+  align-self: center;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--ash);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.alt-link:hover { color: var(--gold-hi); }
+.reminder-note { font-size: 15px; color: var(--gold-lo); font-style: italic; margin: 0; }
+
+/* countdown */
+.count { text-align: center; }
+.count-cells {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-block: 1px solid var(--rule);
+}
+.count-cells > div {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding-block: 14px 12px;
+}
+.count-cells > div + div { border-left: 1px solid var(--rule); }
+.count-cells b {
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--gold-hi);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.count-cells span { font-size: 11px; }
+.count p { margin: 12px 0 0; font-style: italic; color: var(--ash); font-size: 17px; }
+
+/* dinner */
+.dinner .arch-inner { padding: 13% 28px 30px; }
+.dinner h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1;
+  margin: 10px 0 0;
+  color: var(--gold-hi);
+}
+.dinner .when { font-size: 21px; margin: 12px 0 0; }
+.dinner .where { color: var(--ash); font-style: italic; margin: 2px 0 0; }
+.dinner .details { font-size: 16px; color: var(--gold-lo); font-style: italic; margin: 14px 0 0; max-width: 28ch; text-wrap: balance; }
+
+/* guest note */
+.note {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 14px;
+  align-items: start;
+  padding: 0 6px;
+}
+.note .star { width: 18px; height: 18px; margin-top: 5px; }
+.note p { margin: 0; color: var(--ash); font-size: 17px; min-width: 0; }
+.note .label { grid-column: 2; }
+
+/* verse */
+.verse { text-align: center; padding-top: 6px; }
+.verse .ar {
+  font-family: var(--arabic);
+  font-size: 21px;
+  line-height: 2;
+  color: var(--gold);
+  margin: 0;
+  text-wrap: balance;
+}
+.verse .en { font-style: italic; color: var(--ash); font-size: 17px; margin: 8px 0 0; }
+.verse .ref { display: block; margin-top: 10px; color: var(--gold-lo); }
+
+/* drawing the frame on load */
+.frame.drawing .outer,
+.frame.drawing .inner { animation: draw 2.2s cubic-bezier(.6, .1, .2, 1) forwards; }
+.frame.drawing .outer { fill-opacity: 0; animation-name: draw, fillin; animation-duration: 2.2s, 1.2s; animation-delay: 0s, 1.4s; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes fillin { to { fill-opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .frame.drawing .outer, .frame.drawing .inner { animation: none; stroke-dashoffset: 0; fill-opacity: 1; }
+  .btn { transition: none; }
+}
+
+@media (max-width: 360px) {
+  .arch-inner { padding-left: 20px; padding-right: 20px; }
+  .bismillah { font-size: 22px; }
+  .date-day { font-size: 56px; }
+}
+</style>
+</head>
+<body>
+
+<main class="page">
+
+  <!-- The Nikah -->
+  <section class="arch nikah" data-arch="0.62" aria-label="Wedding invitation">
+    <svg class="frame" aria-hidden="true"><path class="outer"/><path class="inner"/></svg>
+    <div class="arch-inner">
+      <svg class="star" viewBox="0 0 30 30" aria-hidden="true">
+        <rect x="6" y="6" width="18" height="18"/>
+        <rect x="6" y="6" width="18" height="18" transform="rotate(45 15 15)"/>
+        <circle cx="15" cy="15" r="3.2"/>
+      </svg>
+
+      <p class="bismillah" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+
+      <p class="blessing">In the name of Allah, the Most Gracious, the Most Merciful</p>
+
+      <h1 class="names">
+        <span class="name" id="groom">Oussema</span>
+        <span class="amp">&amp;</span>
+        <span class="name" id="bride">Safa</span>
+      </h1>
+
+      <p class="invite-line">invite you to witness their <strong>wedding</strong> (Nikah)</p>
+
+      <div class="divider" aria-hidden="true">
+        <svg class="star" viewBox="0 0 30 30"><rect x="6" y="6" width="18" height="18"/><rect x="6" y="6" width="18" height="18" transform="rotate(45 15 15)"/></svg>
+      </div>
+
+      <div class="date" aria-label="Saturday 31 October 2026">
+        <span class="label date-side">Saturday</span>
+        <span class="date-day">31</span>
+        <span class="label date-side">October</span>
+      </div>
+      <div class="label date-year">2026</div>
+      <p class="time">14:15 <span>· after Dhuhr prayer</span></p>
+      <p class="hijri" lang="ar" dir="rtl">٢٠ جمادى الأولى ١٤٤٨ هـ</p>
+
+      <div class="divider" aria-hidden="true">
+        <svg class="star" viewBox="0 0 30 30"><rect x="6" y="6" width="18" height="18"/><rect x="6" y="6" width="18" height="18" transform="rotate(45 15 15)"/></svg>
+      </div>
+
+      <span class="label">At the mosque</span>
+      <p class="venue-name">Mesquita Central de Lisboa</p>
+      <p class="venue-sub">Rua da Mesquita 2, Lisbon<br>Metro: Praça de Espanha or São Sebastião</p>
+
+      <div class="actions">
+        <a class="btn btn-primary" id="cal-btn" target="_blank" rel="noopener"
+           href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Wedding%20of%20Oussema%20%26%20Safa&amp;dates=20261031T141500Z/20261031T153000Z&amp;details=Wedding%20(Nikah)%20after%20Dhuhr%20prayer%20at%20Mesquita%20Central%20de%20Lisboa.%20Please%20dress%20modestly%3B%20sisters%20are%20kindly%20asked%20to%20bring%20a%20headscarf.&amp;location=Mesquita%20Central%20de%20Lisboa%2C%20Rua%20da%20Mesquita%202%2C%20Lisboa&amp;ctz=Europe%2FLisbon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4M12 13v4M10 15h4"/></svg>
+          <span id="cal-label">Add to my calendar</span>
+        </a>
+        <a class="alt-link" id="cal-alt" href="nikah.ics" target="_blank" rel="noopener" hidden>Use Apple or Outlook calendar instead</a>
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&amp;query=Mesquita%20Central%20de%20Lisboa%2C%20Rua%20da%20Mesquita%202%2C%20Lisboa">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-6.1-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.9 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.3"/></svg>
+          <span>Open in Google Maps</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Countdown -->
+  <section class="count" aria-live="polite">
+    <div class="count-cells" id="count-cells">
+      <div><b id="cd-d">16</b><span class="label">Days</span></div>
+      <div><b id="cd-h">00</b><span class="label">Hours</span></div>
+      <div><b id="cd-m">00</b><span class="label">Minutes</span></div>
+    </div>
+    <p id="cd-text" hidden></p>
+  </section>
+
+  <!-- Dinner -->
+  <section class="arch dinner" data-arch="0.2" aria-label="Dinner with friends">
+    <svg class="frame" aria-hidden="true"><path class="outer"/><path class="inner"/></svg>
+    <div class="arch-inner">
+      <span class="label">Two days before</span>
+      <h2>Dinner with Friends</h2>
+      <p class="when">Thursday 29 October 2026</p>
+      <p class="where">after working hours, at our home</p>
+      <p class="details">We will share the address with you personally.</p>
+    </div>
+  </section>
+
+  <!-- Guest note -->
+  <section class="note">
+    <svg class="star" viewBox="0 0 30 30" aria-hidden="true"><rect x="6" y="6" width="18" height="18"/><rect x="6" y="6" width="18" height="18" transform="rotate(45 15 15)"/></svg>
+    <span class="label">For our guests</span>
+    <p style="grid-column:2">The wedding (Nikah) takes place in the mosque, so please dress modestly. Sisters are kindly asked to bring a headscarf.</p>
+  </section>
+
+  <!-- Verse -->
+  <section class="verse">
+    <p class="ar" lang="ar" dir="rtl">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+    <p class="en">And He placed between you affection and mercy.</p>
+    <span class="label ref">Sūrat ar-Rūm · 30:21</span>
+  </section>
+
+</main>
+
+<script>
+(function () {
+  /* ---------- pointed-arch frames ---------- */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function archPath(W, H, ratio, d) {
+    var h = Math.min(W * ratio, H * 0.7);
+    if (h < W / 2) {
+      /* low four-centred (Tudor) arch: tight shoulders, shallow sides meeting in a point */
+      var top = d * 1.4, mid = W / 2, rise = h - top;
+      return 'M' + d + ',' + (H - d) + ' L' + d + ',' + h +
+             ' C' + d + ',' + (top + rise * 0.25) + ' ' + (mid - (mid - d) * 0.6) + ',' + (top + rise * 0.14) + ' ' + mid + ',' + top +
+             ' C' + (mid + (mid - d) * 0.6) + ',' + (top + rise * 0.14) + ' ' + (W - d) + ',' + (top + rise * 0.25) + ' ' + (W - d) + ',' + h +
+             ' L' + (W - d) + ',' + (H - d) + ' Z';
+    }
+    var c = (h * h + W * W / 4) / W;          // radius of each arc (two-centred pointed arch)
+    var r = c - d;
+    var ya = h - Math.sqrt(Math.max(r * r - (c - W / 2) * (c - W / 2), 0));
+    return 'M' + d + ',' + (H - d) + ' L' + d + ',' + h +
+           ' A' + r + ',' + r + ' 0 0 1 ' + (W / 2) + ',' + ya +
+           ' A' + r + ',' + r + ' 0 0 1 ' + (W - d) + ',' + h +
+           ' L' + (W - d) + ',' + (H - d) + ' Z';
+  }
+
+  function setupArch(el) {
+    var svg = el.querySelector('svg.frame');
+    var outer = svg.querySelector('.outer');
+    var inner = svg.querySelector('.inner');
+    var ratio = parseFloat(el.getAttribute('data-arch')) || 0.6;
+    var animated = false;
+
+    function render() {
+      var W = el.clientWidth, H = el.clientHeight;
+      if (!W || !H) return;
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      outer.setAttribute('d', archPath(W, H, ratio, 0.75));
+      inner.setAttribute('d', archPath(W, H, ratio, 8));
+      if (!animated && !reduce && outer.getTotalLength) {
+        animated = true;
+        [outer, inner].forEach(function (p) {
+          var L = p.getTotalLength();
+          p.style.strokeDasharray = L;
+          p.style.strokeDashoffset = L;
+        });
+        svg.classList.add('drawing');
+        setTimeout(function () {
+          svg.classList.remove('drawing');
+          [outer, inner].forEach(function (p) { p.style.strokeDasharray = ''; p.style.strokeDashoffset = ''; });
+        }, 2800);
+      }
+    }
+    render();
+    if ('ResizeObserver' in window) new ResizeObserver(render).observe(el);
+    else window.addEventListener('resize', render);
+  }
+  document.querySelectorAll('.arch').forEach(setupArch);
+
+  /* ---------- calendar button: Apple Calendar on iPhone / Mac, Google Calendar on Android ---------- */
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isMac = /Macintosh/.test(ua) && !isIOS;
+  var isAndroid = /Android/i.test(ua);
+  var gcal = document.getElementById('cal-btn').getAttribute('href');
+  var ics = 'nikah.ics';
+  var btn = document.getElementById('cal-btn');
+  var label = document.getElementById('cal-label');
+  var alt = document.getElementById('cal-alt');
+
+  label.textContent = 'Add to Google Calendar';
+
+  /* Apple Calendar needs the nikah.ics file next to this page. Switch to it only where it is
+     actually served (any normal web host); otherwise Google Calendar stays the button. */
+  if (window.fetch && location.protocol.indexOf('http') === 0) {
+    fetch(ics, { method: 'HEAD', cache: 'no-store' }).then(function (r) {
+      var type = (r.headers.get('content-type') || '').toLowerCase();
+      if (!r.ok || type.indexOf('html') !== -1) return;
+      if (isIOS || isMac) {
+        btn.setAttribute('href', ics);
+        label.textContent = 'Add to Apple Calendar';
+        alt.setAttribute('href', gcal);
+        alt.textContent = 'Use Google Calendar instead';
+      } else {
+        alt.textContent = isAndroid ? 'Use another calendar app instead' : 'Use Apple or Outlook calendar instead';
+      }
+      alt.hidden = false;
+    }).catch(function () {});
+  }
+
+  /* ---------- countdown to 31 Oct 2026, 14:15 Lisbon (WET = UTC+0) ---------- */
+  var start = Date.UTC(2026, 9, 31, 14, 15);
+  var end = Date.UTC(2026, 9, 31, 15, 30);
+  var cells = document.getElementById('count-cells');
+  var text = document.getElementById('cd-text');
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function tick() {
+    var now = Date.now();
+    var diff = start - now;
+    if (diff > 0) {
+      var mins = Math.floor(diff / 60000);
+      document.getElementById('cd-d').textContent = Math.floor(mins / 1440);
+      document.getElementById('cd-h').textContent = pad(Math.floor(mins / 60) % 24);
+      document.getElementById('cd-m').textContent = pad(mins % 60);
+    } else {
+      cells.hidden = true;
+      text.hidden = false;
+      text.textContent = now < end ? 'The wedding is taking place now.' : 'Alhamdulillah. Married on 31 October 2026.';
+    }
+  }
+  tick();
+  setInterval(tick, 20000);
+})();
+</script>
+
+</body>
+</html>
