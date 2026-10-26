@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Grenze+Gotisch:wght@400;500&family=Marcellus&display=swap">
 <style>
 /* Layout: one narrow mihrab arch (the pointed arch Islamic and Gothic builders share) on black,
-   holding the wedding; quieter blocks for the countdown, the dinner and guest notes below it. */
+   holding the wedding; quieter blocks for the countdown and guest notes below it. */
 :root {
   color-scheme: dark;
   --ink: #0a0908;        /* page black, faint warm bias */
@@ -255,20 +255,6 @@ body {
 .count-cells span { font-size: 11px; }
 .count p { margin: 12px 0 0; font-style: italic; color: var(--ash); font-size: 17px; }
 
-/* dinner */
-.dinner .arch-inner { padding: 13% 28px 30px; }
-.dinner h2 {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 1;
-  margin: 10px 0 0;
-  color: var(--gold-hi);
-}
-.dinner .when { font-size: 21px; margin: 12px 0 0; }
-.dinner .where { color: var(--ash); font-style: italic; margin: 2px 0 0; }
-.dinner .details { font-size: 16px; color: var(--gold-lo); font-style: italic; margin: 14px 0 0; max-width: 28ch; text-wrap: balance; }
-
 /* guest note */
 .note {
   display: grid;
@@ -338,7 +324,7 @@ body {
         <span class="name" id="bride">Safa</span>
       </h1>
 
-      <p class="invite-line">invite you to attend their <strong>wedding</strong></p>
+      <p class="invite-line">invite you to attend and witness their <strong>wedding</strong></p>
       <p class="aqd" lang="ar" dir="rtl">عقد القران</p>
 
       <div class="divider" aria-hidden="true">
@@ -387,18 +373,6 @@ body {
       <div><b id="cd-s">00</b><span class="label">Seconds</span></div>
     </div>
     <p id="cd-text" hidden></p>
-  </section>
-
-  <!-- Dinner -->
-  <section class="arch dinner" data-arch="0.2" aria-label="Dinner with friends">
-    <svg class="frame" aria-hidden="true"><path class="outer"/><path class="inner"/></svg>
-    <div class="arch-inner">
-      <span class="label">Two days before</span>
-      <h2>Dinner with Friends</h2>
-      <p class="when">Thursday 29 October 2026</p>
-      <p class="where">after working hours, at our home</p>
-      <p class="details">We will share the address with you personally.</p>
-    </div>
   </section>
 
   <!-- Guest note -->
